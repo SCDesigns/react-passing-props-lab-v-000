@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-
+/*
+All Moved to App.js
 class Filter extends Component {
-  constructor() {
+    constructor() {
     super();
 
     this.state = {
@@ -19,16 +19,21 @@ class Filter extends Component {
       .then(filters => this.setState({ filters }));
   }
 
-  render() {
-    return (
-      <select onChange={this.props.handleChange} defaultValue='all'>
-        <option value='all'>All</option>
-        {this.state.filters.map(filter =>
-          <option key={filter} value={filter}>{filter}</option>
-        )}
-      </select>
-    );
+
+  render() { */
+import React from 'react';
+
+const Filter = props =>
+  <select onChange={props.handleChange} defaultValue='all'>
+    <option value='all'>All</option>
+    {props.filters.map(filter =>
+      <option key={filter} value={filter}>{filter}</option>
+    )}
+  </select>
+
+  Filter.defaultProps = {
+    handleChange: '',
+    filters: '',
   }
-}
 
 export default Filter;

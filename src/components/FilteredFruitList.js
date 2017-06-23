@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-
+/*
+All Moved to App.js
 class FilteredFruitList extends Component {
-  constructor(props) {
+    constructor(props) {
     super(props);
 
     this.state = {
@@ -15,15 +15,25 @@ class FilteredFruitList extends Component {
       .then(items => this.setState({ items }));
   }
 
-  render() {
-    const list = !this.props.filter ? this.state.items : this.state.items.filter(i => i.fruit_type === this.props.filter);
+Remove unnecessary Render -- (Not a Component & replace "this.state" w/ "props")
+    render() {
+      const list = !this.props.filter ? this.state.items : this.state.items.filter(i => i.fruit_type === this.props.filter);
+  */
+import React from 'react';
 
-    return (
-      <ul className="fruit-list">
-        {list.map((item, index) => <li key={index}>{item.char}</li>)}
-      </ul>
-    );
-  }
+const FilteredFruitList = props => {
+  const list = !props.filter ? props.fruit : props.fruit.filter(i => i.fruit_type === props.filter);
+
+  return (
+    <ul className="fruit-list">
+      {list.map((item, index) => <li key={index}>{item.char}</li>)}
+    </ul>
+  );
 }
 
-export default FilteredFruitList;
+FilteredFruitList.defaultProps = {
+  fruit: '',
+  filter: ''
+}
+
+export default FilteredFruitList
